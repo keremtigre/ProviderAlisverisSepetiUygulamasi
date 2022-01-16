@@ -3,9 +3,14 @@ import 'package:flutter_provider_deneme_1/models/product.dart';
 import 'package:flutter_provider_deneme_1/state/product_state.dart';
 import 'package:provider/provider.dart';
 
-class ProviderSepeti extends StatelessWidget {
+class ProviderSepeti extends StatefulWidget {
   const ProviderSepeti({Key? key}) : super(key: key);
 
+  @override
+  State<ProviderSepeti> createState() => _ProviderSepetiState();
+}
+
+class _ProviderSepetiState extends State<ProviderSepeti> {
   @override
   Widget build(BuildContext context) {
     List<Product> products = Provider.of<ProductState>(context).product;
@@ -66,18 +71,22 @@ class ProviderSepeti extends StatelessWidget {
                             InkWell(
                               child: Icon(Icons.remove),
                               onTap: () {
-                                Provider.of<ProductState>(context,
-                                        listen: false)
-                                    .deleteProductSeptte(product);
+                                setState(() {
+                                  Provider.of<ProductState>(context,
+                                          listen: false)
+                                      .deleteProductSeptte(product);
+                                });
                               },
                             ),
                             Text(product.product_count.toString()),
                             InkWell(
                               child: Icon(Icons.add),
                               onTap: () {
-                                Provider.of<ProductState>(context,
-                                        listen: false)
-                                    .addProductSepette(product);
+                                setState(() {
+                                  Provider.of<ProductState>(context,
+                                          listen: false)
+                                      .addProductSepette(product);
+                                });
                               },
                             ),
                           ],
