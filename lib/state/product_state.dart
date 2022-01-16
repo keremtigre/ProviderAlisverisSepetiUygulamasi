@@ -10,22 +10,25 @@ class ProductState with ChangeNotifier {
   List<Product> get product => _productList;
 
   void addProduct(Product product) {
-    product.sapet_adet++;
+    product.sepet_adet++;
+    notifyListeners();
   }
 
   void deleteProduct(Product product) {
-    if (product.product_count > 0) {
-      product.sapet_adet--;
+    if (product.sepet_adet > 0) {
+      product.sepet_adet--;
       notifyListeners();
     }
   }
 
   void sepeteTiklandi(Product product) {
-    product.product_count = product.sapet_adet;
+    product.product_count = product.sepet_adet;
+    notifyListeners();
   }
 
   void addProductSepette(Product product) {
     product.product_count++;
+    notifyListeners();
   }
 
   void deleteProductSeptte(Product product) {

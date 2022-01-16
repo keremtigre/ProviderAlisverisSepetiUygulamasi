@@ -4,7 +4,7 @@ class Product {
   late String product_color;
   late String uri;
   late int product_count;
-  late int sapet_adet;
+  late int sepet_adet;
 
   Product(String name, String price, String color, String uri, int count,
       int adet) {
@@ -13,6 +13,6 @@ class Product {
     this.product_color = color;
     this.uri = uri;
     this.product_count = count;
-    this.sapet_adet = adet;
+    this.sepet_adet = adet;
   }
 }

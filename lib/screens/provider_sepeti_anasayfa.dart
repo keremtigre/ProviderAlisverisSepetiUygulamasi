@@ -59,7 +59,7 @@ class _ProviderSepetiAnasayfaState extends State<ProviderSepetiAnasayfa> {
           String name = products[index2].product_name;
           String color = products[index2].product_color;
           String price = products[index2].product_price;
-          int count = products[index2].sapet_adet;
+          int count = products[index2].sepet_adet;
           return Card(
             elevation: 20,
             child: Column(
