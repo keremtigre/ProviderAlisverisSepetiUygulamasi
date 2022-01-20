@@ -27,6 +27,11 @@ class ProductState with ChangeNotifier {
     }
   }
 
+  void SetProductCount(Product product) {
+    product.product_count = 0;
+    notifyListeners();
+  }
+
   void sepeteTiklandi(Product product) {
     product.product_count = product.sepet_adet;
     notifyListeners();

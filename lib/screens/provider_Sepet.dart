@@ -23,76 +23,94 @@ class _ProviderSepetiState extends State<ProviderSepeti> {
             itemCount: products.length,
             itemBuilder: (context, index) {
               Product product = products[index];
-              return Card(
-                elevation: 20,
-                child: product.product_count > 0
-                    ? Container(
-                        width: double.infinity,
-                        height: 150,
-                        child: Row(
-                          children: [
-                            Column(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.only(top: 20),
-                                  child: Image(
-                                    fit: BoxFit.cover,
-                                    width: 120,
-                                    height: 90,
-                                    image: AssetImage(product.uri),
+              return Dismissible(
+                background: Container(
+                  padding: EdgeInsets.only(top: 60, left: 25),
+                  color: Colors.red,
+                  child: Text(
+                    "Sil",
+                    style: TextStyle(color: Colors.white, fontSize: 25),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                onDismissed: (direction) {
+                  setState(() {
+                    Provider.of<ProductState>(context, listen: false)
+                        .SetProductCount(product);
+                  });
+                },
+                key: UniqueKey(),
+                child: Card(
+                  elevation: 20,
+                  child: product.product_count > 0
+                      ? Container(
+                          width: double.infinity,
+                          height: 150,
+                          child: Row(
+                            children: [
+                              Column(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.only(top: 20),
+                                    child: Image(
+                                      fit: BoxFit.cover,
+                                      width: 120,
+                                      height: 90,
+                                      image: AssetImage(product.uri),
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  product.product_name +
-                                      " " +
-                                      product.product_color,
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 40),
-                              child: Text(
-                                product.product_price + " TL",
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    product.product_name +
+                                        " " +
+                                        product.product_color,
+                                  ),
+                                ],
                               ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: 20),
-                              color: Colors.black12,
-                              width: 1,
-                              height: double.infinity,
-                            ),
-                            SizedBox(
-                              width: 40,
-                            ),
-                            InkWell(
-                              child: Icon(Icons.remove),
-                              onTap: () {
-                                setState(() {
-                                  Provider.of<ProductState>(context,
-                                          listen: false)
-                                      .deleteProductSeptte(product);
-                                });
-                              },
-                            ),
-                            Text(product.product_count.toString()),
-                            InkWell(
-                              child: Icon(Icons.add),
-                              onTap: () {
-                                setState(() {
-                                  Provider.of<ProductState>(context,
-                                          listen: false)
-                                      .addProductSepette(product);
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      )
-                    : Container(),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 40),
+                                child: Text(
+                                  product.product_price + " TL",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 20),
+                                color: Colors.black12,
+                                width: 1,
+                                height: double.infinity,
+                              ),
+                              SizedBox(
+                                width: 40,
+                              ),
+                              InkWell(
+                                child: Icon(Icons.remove),
+                                onTap: () {
+                                  setState(() {
+                                    Provider.of<ProductState>(context,
+                                            listen: false)
+                                        .deleteProductSeptte(product);
+                                  });
+                                },
+                              ),
+                              Text(product.product_count.toString()),
+                              InkWell(
+                                child: Icon(Icons.add),
+                                onTap: () {
+                                  setState(() {
+                                    Provider.of<ProductState>(context,
+                                            listen: false)
+                                        .addProductSepette(product);
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        )
+                      : Container(),
+                ),
               );
             }));
   }
